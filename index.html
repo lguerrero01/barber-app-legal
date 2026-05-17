@@ -66,7 +66,7 @@
   <div class="container">
 
     <div class="logo">BARBER<span>APP</span></div>
-    <p class="updated">Última actualización: 16 de mayo de 2025</p>
+    <p class="updated">Última actualización: 17 de mayo de 2025</p>
 
     <h1>POLÍTICA DE PRIVACIDAD</h1>
 
@@ -85,6 +85,7 @@
       <li>Correo electrónico y contraseña (para autenticación)</li>
       <li>Nombre y nombre del negocio</li>
       <li>Número de teléfono</li>
+      <li>Foto de perfil, subida voluntariamente y almacenada en Supabase Storage; visible públicamente para clientes que buscan barberos</li>
       <li>Horarios de atención y servicios ofrecidos</li>
       <li>Ubicación geográfica (latitud y longitud), solo si el barbero activa voluntariamente la función de mapa</li>
       <li>Datos de métodos de pago (banco, número de teléfono de pago móvil, cédula, ID de Binance) ingresados voluntariamente</li>
@@ -95,6 +96,8 @@
       <li>Nombre y número de teléfono (ingresados manualmente al reservar)</li>
       <li>Detalles de las citas (fecha, hora, servicio, modalidad, método de pago seleccionado)</li>
       <li>Dirección de domicilio, solo cuando se solicita servicio a domicilio</li>
+      <li>Ubicación GPS del dispositivo, usada exclusivamente para mostrar barberos cercanos en el mapa; <strong>no se almacena</strong> en ningún servidor</li>
+      <li>Reseñas y calificaciones (nombre, número de teléfono, puntuación de 1 a 5 estrellas y comentario opcional), enviadas voluntariamente al calificar una cita completada</li>
     </ul>
 
     <hr class="divider" />
@@ -104,7 +107,9 @@
       <li>Gestionar reservas y citas entre clientes y barberos</li>
       <li>Mostrar el perfil del barbero y su disponibilidad en tiempo real</li>
       <li>Enviar notificaciones push sobre nuevas citas o cambios de estado (solo barberos)</li>
-      <li>Mostrar barberos cercanos en el mapa a clientes que lo soliciten</li>
+      <li>Mostrar barberos cercanos en el mapa a clientes que lo soliciten (la ubicación GPS del cliente se usa solo en el momento de la búsqueda y no se guarda)</li>
+      <li>Mostrar la foto de perfil del barbero en el mapa y durante el proceso de reserva</li>
+      <li>Publicar calificaciones y reseñas de clientes sobre el servicio recibido, visibles para otros usuarios de la app</li>
       <li>Procesar y registrar el estado de la suscripción del barbero</li>
     </ul>
     <p>No usamos la información para publicidad ni la vendemos a terceros.</p>
@@ -115,7 +120,7 @@
     <p>BarberApp utiliza los siguientes servicios externos, cada uno con su propia política de privacidad:</p>
     <ul>
       <li>
-        <strong>Supabase</strong> — Almacenamiento de datos y autenticación.
+        <strong>Supabase</strong> — Almacenamiento de datos, autenticación y almacenamiento de archivos (fotos de perfil).
         <a href="https://supabase.com/privacy" target="_blank">Ver política</a>
       </li>
       <li>
@@ -136,9 +141,17 @@
       Las contraseñas nunca se almacenan en texto plano; son gestionadas por el sistema de autenticación de Supabase.
     </p>
     <p>
+      Las fotos de perfil de los barberos se almacenan en Supabase Storage con acceso público de lectura,
+      lo que permite mostrarlas en el mapa y en la pantalla de reserva sin requerir autenticación.
+    </p>
+    <p>
       Los datos de los clientes (nombre y teléfono) se almacenan localmente en el dispositivo mediante
       <code>localStorage</code> para permitir el acceso sin contraseña. Esta información no se sincroniza
       con otros dispositivos.
+    </p>
+    <p>
+      Las reseñas enviadas por los clientes (nombre, calificación y comentario) se almacenan en la base de datos
+      y son visibles públicamente dentro de la aplicación.
     </p>
 
     <hr class="divider" />

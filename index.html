@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidad — BarberApp</title>
+  <title>Política de Privacidad — Citalook</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -42,11 +42,26 @@
       letter-spacing: 0.08em;
       margin: 36px 0 12px;
     }
+    h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 20px 0 8px;
+    }
     p { color: #bbb; margin-bottom: 12px; }
     ul { color: #bbb; padding-left: 20px; margin-bottom: 12px; }
     ul li { margin-bottom: 6px; }
     a { color: #e63946; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    code {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.85em;
+      background: #161616;
+      border: 1px solid #222;
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: #ddd;
+    }
     .divider {
       border: none;
       border-top: 1px solid #1e1e1e;
@@ -65,87 +80,144 @@
 <body>
   <div class="container">
 
-    <div class="logo">BARBER<span>APP</span></div>
-    <p class="updated">Última actualización: 17 de mayo de 2025</p>
+    <div class="logo">CITA<span>LOOK</span></div>
+    <p class="updated">Última actualización: 8 de julio de 2026</p>
 
     <h1>POLÍTICA DE PRIVACIDAD</h1>
 
     <p>
-      Esta Política de Privacidad describe cómo <strong>BarberApp</strong> recopila, usa y protege
-      la información de sus usuarios. Al usar la aplicación, aceptas los términos descritos aquí.
+      Esta Política de Privacidad describe cómo <strong>Citalook</strong> (anteriormente
+      «BarberApp») recopila, usa y protege la información de sus usuarios. Citalook es una
+      aplicación de reservas que conecta a clientes con profesionales de barbería y estética.
+      Al usar la aplicación, aceptas los términos descritos aquí.
     </p>
 
     <hr class="divider" />
 
     <h2>1. Información que recopilamos</h2>
-    <p>BarberApp recopila la siguiente información según el tipo de usuario:</p>
+    <p>Citalook recopila la siguiente información según el tipo de usuario:</p>
 
-    <p><strong>Barberos (profesionales):</strong></p>
+    <h3>Profesionales (barberos y esteticistas)</h3>
     <ul>
       <li>Correo electrónico y contraseña (para autenticación)</li>
-      <li>Nombre y nombre del negocio</li>
-      <li>Número de teléfono</li>
-      <li>Foto de perfil, subida voluntariamente y almacenada en Supabase Storage; visible públicamente para clientes que buscan barberos</li>
-      <li>Horarios de atención y servicios ofrecidos</li>
-      <li>Ubicación geográfica (latitud y longitud), solo si el barbero activa voluntariamente la función de mapa</li>
-      <li>Datos de métodos de pago (banco, número de teléfono de pago móvil, cédula, ID de Binance) ingresados voluntariamente</li>
+      <li>Nombre, nombre del negocio y un código público de reserva (<code>slug</code>)</li>
+      <li>Profesión seleccionada (barbero o esteticista)</li>
+      <li>Número de teléfono (obligatorio y único; se usa como identificador y para que los clientes contacten al profesional)</li>
+      <li>Descripción del negocio</li>
+      <li>Foto de perfil, subida voluntariamente y almacenada en Supabase Storage; visible públicamente para los clientes</li>
+      <li>Fotos de portafolio (hasta 8 imágenes de trabajos realizados), subidas voluntariamente y visibles públicamente</li>
+      <li>Horarios de atención, días hábiles y servicios ofrecidos con sus precios</li>
+      <li>Configuración de servicio a domicilio (tarifa) y de abono/depósito anticipado (porcentaje y tiempo de validez)</li>
+      <li>Ubicación geográfica (latitud y longitud), solo si el profesional activa voluntariamente la función de mapa</li>
+      <li>Datos de métodos de pago para recibir cobros (banco, número de teléfono de pago móvil, cédula, etiqueta de Binance, efectivo) ingresados voluntariamente</li>
+      <li>Estado y fecha de vencimiento de la suscripción, y referencias de los pagos de suscripción enviados</li>
     </ul>
 
-    <p><strong>Clientes:</strong></p>
+    <h3>Clientes</h3>
+    <p>
+      Los clientes <strong>no crean una cuenta con contraseña</strong>. Su identidad se basa en
+      el nombre y número de teléfono que ingresan al reservar. Recopilamos:
+    </p>
     <ul>
       <li>Nombre y número de teléfono (ingresados manualmente al reservar)</li>
-      <li>Detalles de las citas (fecha, hora, servicio, modalidad, método de pago seleccionado)</li>
+      <li>Detalles de las citas (fecha, hora, servicio, extras, modalidad y método de pago seleccionado)</li>
       <li>Dirección de domicilio, solo cuando se solicita servicio a domicilio</li>
-      <li>Ubicación GPS del dispositivo, usada exclusivamente para mostrar barberos cercanos en el mapa; <strong>no se almacena</strong> en ningún servidor</li>
-      <li>Reseñas y calificaciones (nombre, número de teléfono, puntuación de 1 a 5 estrellas y comentario opcional), enviadas voluntariamente al calificar una cita completada</li>
+      <li>Referencia de la transferencia bancaria del cliente, cuando paga un abono/depósito anticipado o el total por transferencia</li>
+      <li>Saldo a favor (monedero) asociado a su número de teléfono con un profesional determinado</li>
+      <li>Historial de comportamiento de la reserva (cancelaciones y su motivo, reprogramaciones, inasistencias / «no-show»)</li>
+      <li>Ubicación GPS del dispositivo, usada exclusivamente para mostrar profesionales cercanos en el mapa; <strong>no se almacena</strong> en ningún servidor</li>
+      <li>Reseñas y calificaciones (nombre, puntuación de 1 a 5 estrellas y comentario opcional), enviadas voluntariamente al calificar una cita completada. El número de teléfono se registra internamente junto a la reseña para evitar reseñas duplicadas, aunque <strong>no se muestra públicamente</strong></li>
     </ul>
+
+    <h3>Datos guardados en el dispositivo</h3>
+    <p>
+      Para agilizar el uso, la app puede guardar localmente en el dispositivo (mediante
+      <code>localStorage</code>) el nombre y teléfono del cliente, así como preferencias como
+      «recordar mis datos» para prellenar el inicio de sesión, el código del profesional visitado,
+      el tema visual y el estado del tutorial inicial. Estos datos <strong>nunca incluyen
+      contraseñas</strong> y no se sincronizan con otros dispositivos.
+    </p>
 
     <hr class="divider" />
 
     <h2>2. Cómo usamos la información</h2>
     <ul>
-      <li>Gestionar reservas y citas entre clientes y barberos</li>
-      <li>Mostrar el perfil del barbero y su disponibilidad en tiempo real</li>
-      <li>Enviar notificaciones push sobre nuevas citas o cambios de estado (solo barberos)</li>
-      <li>Mostrar barberos cercanos en el mapa a clientes que lo soliciten (la ubicación GPS del cliente se usa solo en el momento de la búsqueda y no se guarda)</li>
-      <li>Mostrar la foto de perfil del barbero en el mapa y durante el proceso de reserva</li>
-      <li>Publicar calificaciones y reseñas de clientes sobre el servicio recibido, visibles para otros usuarios de la app</li>
-      <li>Procesar y registrar el estado de la suscripción del barbero</li>
+      <li>Gestionar reservas, abonos y citas entre clientes y profesionales</li>
+      <li>Mostrar el perfil del profesional, su portafolio y su disponibilidad en tiempo real</li>
+      <li>Enviar notificaciones push sobre nuevas citas, cambios de estado o pagos (dirigidas a los profesionales y al administrador)</li>
+      <li>Mostrar profesionales cercanos en el mapa a los clientes que lo soliciten (la ubicación GPS del cliente se usa solo en el momento de la búsqueda y no se guarda)</li>
+      <li>Verificar y registrar el estado de los pagos de abono y de suscripción a partir de las referencias enviadas</li>
+      <li>Gestionar el saldo a favor (monedero) de los clientes</li>
+      <li>Publicar calificaciones y reseñas de los clientes sobre el servicio recibido, visibles para otros usuarios</li>
+      <li>Permitir compartir los detalles de una cita o el código de un profesional mediante WhatsApp o la función de compartir del dispositivo, cuando el usuario lo elige activamente</li>
     </ul>
     <p>No usamos la información para publicidad ni la vendemos a terceros.</p>
 
     <hr class="divider" />
 
     <h2>3. Servicios de terceros</h2>
-    <p>BarberApp utiliza los siguientes servicios externos, cada uno con su propia política de privacidad:</p>
+    <p>Citalook utiliza los siguientes servicios externos, cada uno con su propia política de privacidad:</p>
     <ul>
       <li>
-        <strong>Supabase</strong> — Almacenamiento de datos, autenticación y almacenamiento de archivos (fotos de perfil).
+        <strong>Supabase</strong> — Base de datos, autenticación, almacenamiento de archivos (fotos de perfil y portafolio), funciones de servidor y sincronización en tiempo real.
         <a href="https://supabase.com/privacy" target="_blank">Ver política</a>
       </li>
       <li>
-        <strong>OneSignal</strong> — Notificaciones push (solo para barberos registrados).
+        <strong>OneSignal</strong> — Notificaciones push (dirigidas a profesionales y al administrador).
         <a href="https://onesignal.com/privacy_policy" target="_blank">Ver política</a>
+      </li>
+      <li>
+        <strong>OpenStreetMap</strong> — Mosaicos (tiles) del mapa que muestra a los profesionales cercanos.
+        <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank">Ver política</a>
+      </li>
+      <li>
+        <strong>Google Maps</strong> — Al abrir «cómo llegar», se redirige a Google Maps con las coordenadas del profesional.
+        <a href="https://policies.google.com/privacy" target="_blank">Ver política</a>
+      </li>
+      <li>
+        <strong>WhatsApp / Meta</strong> — Al compartir una cita, se abre WhatsApp con un mensaje que incluye los detalles de la reserva.
+        <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank">Ver política</a>
+      </li>
+      <li>
+        <strong>DolarAPI</strong> — Consulta pública de la tasa de cambio oficial (BCV) para mostrar montos referenciales de la suscripción. No se envían datos personales.
+        <a href="https://dolarapi.com" target="_blank">Ver sitio</a>
       </li>
       <li>
         <strong>Google Fonts</strong> — Fuentes tipográficas cargadas desde los servidores de Google.
         <a href="https://policies.google.com/privacy" target="_blank">Ver política</a>
       </li>
     </ul>
+    <p>
+      Citalook <strong>no</strong> utiliza servicios de analítica, rastreo publicitario, ni
+      procesadores de pago con tarjeta. Los pagos se realizan de forma directa entre el cliente
+      y el profesional (pago móvil, transferencia, efectivo o Binance) fuera de la aplicación;
+      Citalook solo registra las referencias que los usuarios ingresan.
+    </p>
 
     <hr class="divider" />
 
-    <h2>4. Almacenamiento y seguridad</h2>
+    <h2>4. Permisos del dispositivo</h2>
+    <p>La aplicación puede solicitar los siguientes permisos, siempre de forma opcional:</p>
+    <ul>
+      <li><strong>Ubicación (GPS)</strong> — para mostrar profesionales cercanos en el mapa (clientes) o publicar la ubicación del negocio en el mapa (profesionales). Puedes negar o revocar este permiso en cualquier momento.</li>
+      <li><strong>Notificaciones</strong> — para avisar a los profesionales sobre nuevas citas y pagos.</li>
+      <li><strong>Cámara / galería</strong> — solo se activa cuando el profesional elige subir una foto de perfil o de portafolio, a través del selector de archivos del sistema.</li>
+    </ul>
+
+    <hr class="divider" />
+
+    <h2>5. Almacenamiento y seguridad</h2>
     <p>
       Los datos se almacenan en servidores seguros provistos por Supabase, con cifrado en tránsito (HTTPS/TLS).
       Las contraseñas nunca se almacenan en texto plano; son gestionadas por el sistema de autenticación de Supabase.
     </p>
     <p>
-      Las fotos de perfil de los barberos se almacenan en Supabase Storage con acceso público de lectura,
-      lo que permite mostrarlas en el mapa y en la pantalla de reserva sin requerir autenticación.
+      Las fotos de perfil y de portafolio de los profesionales se almacenan en Supabase Storage con acceso
+      público de lectura, lo que permite mostrarlas en el mapa, en el perfil y en la pantalla de reserva
+      sin requerir autenticación.
     </p>
     <p>
-      Los datos de los clientes (nombre y teléfono) se almacenan localmente en el dispositivo mediante
+      Los datos básicos del cliente (nombre y teléfono) se almacenan localmente en el dispositivo mediante
       <code>localStorage</code> para permitir el acceso sin contraseña. Esta información no se sincroniza
       con otros dispositivos.
     </p>
@@ -156,36 +228,48 @@
 
     <hr class="divider" />
 
-    <h2>5. Retención de datos</h2>
+    <h2>6. Administración</h2>
     <p>
-      Los datos de las citas se conservan mientras la cuenta del barbero esté activa.
-      Al eliminar la cuenta, los datos asociados son eliminados de la base de datos.
-      Los clientes pueden solicitar la eliminación de sus datos contactando directamente al desarrollador.
+      Citalook cuenta con un panel de administración operado por el responsable de la aplicación. A través de
+      él, el administrador puede consultar información de las cuentas de los profesionales (correo, fecha de
+      creación y último inicio de sesión), verificar pagos y suscripciones, y —a solicitud— restablecer la
+      contraseña de un profesional. Los clientes no tienen acceso a este panel y sus datos personales no son
+      accesibles a otros clientes.
     </p>
 
     <hr class="divider" />
 
-    <h2>6. Derechos del usuario</h2>
+    <h2>7. Retención de datos</h2>
+    <p>
+      Los datos de las citas, reseñas, saldos y pagos se conservan mientras la cuenta del profesional esté activa.
+      Al eliminar la cuenta, los datos asociados son eliminados de la base de datos.
+      Los clientes pueden solicitar la eliminación de sus datos (incluidas reseñas y saldos) contactando
+      directamente al desarrollador.
+    </p>
+
+    <hr class="divider" />
+
+    <h2>8. Derechos del usuario</h2>
     <p>Tienes derecho a:</p>
     <ul>
       <li>Acceder a los datos que hemos almacenado sobre ti</li>
       <li>Solicitar la corrección de datos incorrectos</li>
       <li>Solicitar la eliminación de tus datos</li>
-      <li>Revocar el acceso a tu ubicación en cualquier momento desde la configuración del dispositivo</li>
+      <li>Revocar el acceso a tu ubicación o a las notificaciones en cualquier momento desde la configuración del dispositivo</li>
     </ul>
 
     <hr class="divider" />
 
-    <h2>7. Menores de edad</h2>
+    <h2>9. Menores de edad</h2>
     <p>
-      BarberApp no está dirigida a menores de 13 años. No recopilamos intencionalmente
+      Citalook no está dirigida a menores de 13 años. No recopilamos intencionalmente
       información de menores. Si detectamos que se ha proporcionado información de un menor,
       la eliminaremos de inmediato.
     </p>
 
     <hr class="divider" />
 
-    <h2>8. Cambios a esta política</h2>
+    <h2>10. Cambios a esta política</h2>
     <p>
       Podemos actualizar esta política ocasionalmente. Los cambios se publicarán en esta misma página
       con la fecha de actualización. El uso continuo de la app después de un cambio implica la aceptación
@@ -194,7 +278,7 @@
 
     <hr class="divider" />
 
-    <h2>9. Contacto</h2>
+    <h2>11. Contacto</h2>
     <p>Para cualquier consulta sobre esta política o solicitud de eliminación de datos:</p>
     <div class="contact-box">
       <p><strong>Luis Guerrero</strong><br />
